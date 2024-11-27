@@ -1,16 +1,18 @@
-const dashboardData = {
-    summaryCards: [
-    { title: 'Total', value: '150', icon: '📊' },
-    { title: 'Average', value: '75%', icon: '📈' },
-    { title: 'Status', value: 'Good', icon: '✅' }
-    ],
-    chartData: {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    values: [65, 59, 80, 81, 56]
-    },
-    listItems: [
-    { id: 1, title: 'Item 1', status: 'Active' },
-    { id: 2, title: 'Item 2', status: 'Pending' }
-    ]
-   };
-   
+let totalIncome = 0;
+let totalExpenses = 0;
+
+document.getElementById('addIncome').addEventListener('click', function() {
+    const incomeInput = document.getElementById('incomeInput').value;
+    totalIncome += parseFloat(incomeInput);
+    document.getElementById('totalIncome').innerText = totalIncome;
+    document.getElementById('balance').innerText = totalIncome - totalExpenses;
+    document.getElementById('incomeInput').value = ''; // Clear input
+});
+
+document.getElementById('addExpense').addEventListener('click', function() {
+    const expenseInput = document.getElementById('expenseInput').value;
+    totalExpenses += parseFloat(expenseInput);
+    document.getElementById('totalExpenses').innerText = totalExpenses;
+    document.getElementById('balance').innerText = totalIncome - totalExpenses;
+    document.getElementById('expenseInput').value = ''; // Clear input
+});
